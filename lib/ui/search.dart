@@ -4,6 +4,7 @@ class SearchView extends StatefulWidget {
   String search;
    SearchView({required this.search});
 
+
   @override
   State<SearchView> createState() => _SearchViewState();
 }

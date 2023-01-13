@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wallpaperhub/ui/search.dart';
 import 'package:flutter_wallpaperhub/widgets/appbar.dart';
 
+import '../models/category_model.dart';
+import '../widgets/category_tile.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -10,6 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  CategoryModel? categoryModel;
+  // List<News> newsModel = [];
   TextEditingController searchC = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -56,7 +61,20 @@ class _HomeState extends State<Home> {
                  )
                ],
              ),
-           )
+           ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              height: 70,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categoryDetails.length,
+                  itemBuilder: (context, index) {
+                    return CategoryCard(
+                      imageAssetUrl: categoryDetails[index].imageAssetUrl!,
+                      categoryName: categoryDetails[index].categorieName!,
+                    );
+                  }),
+            ),
           ],
         ),
       ),
